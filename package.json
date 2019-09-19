@@ -1,54 +1,55 @@
 {
-  "name": "gbi",
-  "private": true,
-  "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@testing-library/jest-dom": "^4.1.0",
-    "@testing-library/react": "^9.1.4",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
-    "babel-preset-gatsby-package": "^0.2.4",
-    "core-js": "^3.2.1",
-    "cross-env": "^5.2.1",
-    "eslint": "^6.3.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "jest": "^24.9.0",
-    "jest-junit": "^7.0.0",
-    "lerna": "^3.16.4",
-    "prettier": "^1.18.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+  "name": "gatsby-background-image",
+  "description": "Lazy-loading React background-image component with optional support for the blur-up effect.",
+  "version": "0.8.11",
+  "author": "Tim Hagn <mail@timhagn.com>",
+  "contributors": [
+    "Tim Hagn <mail@timhagn.com>",
+    "Kyle Mathews <mathews.kyle@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/timhagn/gatsby-background-image/issues"
   },
   "dependencies": {
-    "gatsby-background-image": "file:packages/gatsby-background-image",
-    "gatsby-background-image-es5": "file:packages/gatsby-background-image-es5"
+    "@babel/runtime": "^7.6.0",
+    "global": "^4.4.0",
+    "prop-types": "^15.7.2",
+    "uuid": "^3.3.3"
   },
-  "scripts": {
-    "bootstrap": "npm run lerna-prepare",
-    "cci": "scripts/runcircleci.sh",
-    "jest": "jest",
-    "lerna-prepare": "lerna run prepare",
-    "postmarkdown": "prettier --write \"starters/**/*.md\"",
-    "prebootstrap": "yarn",
-    "preintegration": "cd integration && yarn install && cd ..",
-    "prettier": "prettier \"**/*.{md,css,scss,yaml,yml,ts}\"",
-    "pub": "lerna publish",
-    "test": "jest -i",
-    "test:coverage": "jest -i --coverage",
-    "test:update": "jest -i --updateSnapshot",
-    "test:watch": "jest --watch",
-    "version": "prettier --write \"**/CHANGELOG.md\"",
-    "watch": "lerna run watch --no-sort --stream --concurrency 999"
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
   },
-  "workspaces": [
-    "packages/*"
+  "homepage": "https://github.com/timhagn/gatsby-background-image/tree/master/packages/gatsby-background-image#readme",
+  "keywords": [
+    "gatsby",
+    "gatsby-component",
+    "gatsby-image",
+    "background-image",
+    "backgroundImage",
+    "background",
+    "image",
+    "react-component"
   ],
-  "version": "0.8.10"
+  "license": "MIT",
+  "main": "./index.js",
+  "files": [
+    "/index.js",
+    "/index.d.ts",
+    "/IntersectionObserverUtils.js",
+    "/ImageUtils.js",
+    "/BackgroundUtils.js",
+    "/StyleUtils.js",
+    "/HelperUtils.js"
+  ],
+  "repository": "https://github.com/timhagn/gatsby-background-image/tree/master/packages/gatsby-background-image",
+  "scripts": {
+    "build": "npm run format && babel src --out-dir . --ignore **/__tests__",
+    "format": "prettier --write \"src/*.js\"",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "watch": "babel -w src --out-dir . --ignore **/__tests__",
+    "test": "jest -i",
+    "test:update": "jest -i -u --coverage"
+  },
+  "gitHead": "3af6acb686d5198193e5767eea415aa4525bed0b"
 }
